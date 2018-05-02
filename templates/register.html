@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Registration</title>
+<link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }} />
+<style type="text/css">
+    body{
+        background-color: #FFA500;
+         /*background-image: url("/static/python.png");*/
+    }
+</style>
+</head>
+<body>
+<div class="container">
+	<center>
+        <img src="static/signup.png" alt="SIGN UP img" width="1400px" height="200px">
+        <br>
+		<form action="/register" method="POST">
+
+            <strong>********Enroll Here*******</strong>
+            
+
+    
+    <p>Roll_No:<br> <input type="text" name="Roll_No"></p>
+
+    <p>Name:<br> <input type="text" name="Name"></p>
+
+    <P>Password:<br> <input type="password" name="password"></p>
+   
+
+    <p><input type="submit" value="Register"></p>
+    </form>
+    <a href="/loginForm">Login here</a>
+
+
+
+	  
+	 </center>
+
+</div>
+</body>
+<!-- <script type="text/javascript">
+	function validate() {
+    var pass = document.getElementById("password").value;
+    var cpass = document.getElementById("cpassword").value;
+    if (pass == cpass) {
+        return true;
+    } else {
+        alert("Passwords do not match");
+        return false;
+    }
+}
+</script> -->
+</html>

@@ -1,0 +1,43 @@
+<html>
+<head>
+<style type="text/css">
+  body{
+    background-color: skyblue;
+  }
+</style>
+<!-- <title> First flask app </title> -->
+<title>Login</title>
+<link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }} />
+</head>
+<body class="background">
+  <div class="row" style="color: red"> 
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+              
+            {% for message in messages %}
+                <strong> {{ message }} </strong>
+            {% endfor %}
+            {% endif %}
+        {% endwith %}
+<!--         {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %} -->
+      </div>
+<!-- <p> {{error}} </p> -->
+<center>
+	 <img src="static/login.png" alt="Login img" width="1400px" height="200px">
+        <br>
+	
+	<form action="/login" method="POST">
+  
+  <p>Roll_No:<br><input type="text" name="Roll_No"></p>
+  <p>Password:<br> <input type="password" name="password"></p>
+  <p><input type="submit"></p>
+  <a href="/registerationForm">Register here</a>
+  
+</form>
+</center>
+
+
+</body>
+</html>

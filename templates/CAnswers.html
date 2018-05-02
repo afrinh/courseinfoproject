@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> C Q and A</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <style type="text/css">
+    .arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid black;
+
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  
+  border-top: 10px solid black;
+}
+
+.vote {
+  display: inline-block;
+  overflow: hidden;
+  width: 40px;
+  height: 25px;
+  cursor: pointer;
+  background: url('http://i.stack.imgur.com/iqN2k.png');
+  background-position: 0 -25px;
+} 
+
+
+.vote.on {
+  background-position: 0 2px;
+}
+
+.downvote{
+  background : url('http://i.imgur.com/DdDtGWS.png');
+  display: inline-block;
+  overflow: hidden;
+  width: 40px;
+  height: 25px;
+  cursor: pointer;
+  background-position: 0 0px;
+}
+
+.downvote.on {
+  background-position: 0 -30px;
+}
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="questionbox">
+          <h2>Answers</h2>
+          {{q1.question}}
+          <h5>If you have an answer to this question, you can post here. </h5>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="color: red">
+      {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          {% for message in messages %}
+      <strong> {{ message }} </strong>
+          {% endfor %}
+          {% endif %}
+        {% endwith %}
+<!--         {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %} -->
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="questionarea">
+            <div class="row">
+              <form method="post">
+        <!-- <textarea name="question" value="" rows="2" style="height: 100px; width: 400px;">
+        </textarea>  -->
+              <input type="text" name="answer" style="font-size: 18pt; height: 40px; width:280px;"  value="">
+              <input type="submit">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="answersbox">
+      
+        {% for entries in a %}
+        <div class="row">
+        <!-- <div class="arrow-up" id="upvote" onclick="func_upvote()"> -->
+          <div class="col-md-2">
+            <span class="vote" id="vote"><a href='{{url_for('Upvotes', question=q1.id, posts = entries.ans_id ) }}' ></a></span>
+            <div class="count" id="count">{{entries.upvotes}}</div>
+            <span class="downvote" id="downvote"><a href='{{url_for('Downvotes', question=q1.id, posts = entries.ans_id ) }}' ></a></span>
+          </div>
+          <div class="col-md-10">
+          {{entries.answer}}<hr>
+          </div>
+          </div>
+          {% endfor %}
+    
+  </div>
+              <!-- <p>{% for entries in a %} -->
+        <!-- <div class="arrow-up" id="upvote" onclick="func_upvote()"> -->
+              <!-- <span class="vote" id="vote"> </span> -->
+        <!-- </div> -->
+              <!-- <div class="count" id="count"></div> -->
+        <!-- <div class="arrow-down" id="downvote" onclick="func_downvote()"> -->
+              <!-- <span class="downvote" id="downvote"> </span> -->
+        <!-- </div> -->
+
+              <!-- {{entries.answer}}<hr> -->
+              <!-- {% endfor %} -->
+              <!-- </p> -->
+
+  <!-- <script type="text/javascript">
+    var up_count=0;
+    var down_count=0;
+for (const btn of document.querySelectorAll('.vote')) {
+
+  btn.addEventListener('click', event => {
+    event.target.classList.toggle('on');
+    up_count++;
+    document.getElementById("vote").innerHTML = up_count ;
+
+  }); 
+}
+
+for (const btn of document.querySelectorAll('.downvote')) {
+  btn.addEventListener('click', event => {
+    event.target.classList.toggle('on');
+    down_count;
+    document.getElementById("downvote").innerHTML = down_count ;
+  });
+}
+  </script> -->
+</div>
+</body>
+</html>

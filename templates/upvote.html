@@ -1,0 +1,15 @@
+<div className = "row">
+					<div className = "u-full-width u-cf link-item">
+						<div className = "u-pull-left link-vote">
+							<div className = "u-pull-left vote-buttons">
+							<div className = "arrow-up upvote" onClick={this._onVoteUp}></div>
+							<div className = "arrow-down downvote" onClick=   {this._onVoteDown}></div>
+						</div>
+							<span className="points">{this.state.points}</span>
+						</div>
+						<div className="u-pull-right link-content" onClick={this._onLineClick}>
+							{this.props.title}
+						<span className="u-pull-right info">{domain}</span>
+						</div>
+					</div>
+				</div>

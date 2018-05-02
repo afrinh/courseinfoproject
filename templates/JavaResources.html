@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> JAVA lang Resources</title>
+</head>
+<body>
+  <div align="right">
+            <form action="/logout">
+              <input type="submit" name="logout" value="logout">
+            </form>
+      </div>
+      <br><br>
+    <div class="container">
+    <div class="JavaResources">
+      <strong> CLICK ON YOUR REQUIRED RESOURCE</strong>
+    <ol>
+      <li>
+        <a href="https://www.tutorialspoint.com/java/"> TUTORIAL POINT</a>
+        <br>
+        <img src="static/tutorialpoint.jpg" width="100" height="100" alt="tutorialspoint">
+      </li>
+      <br>
+      <li>
+        <a href="http://nptel.ac.in/courses/106105084/28"> NPTEL </a>
+        <br>
+        <img src="static/nptel.jpg" width="100" height="100" alt="NPTEL">
+      </li>
+      <br>
+      <li>
+        <a href="https://www.cse.iitb.ac.in/~nlp-ai/javalect_august2004.html">IIT BOMBAY</a>
+        <br>
+        <img src="static/iitb.PNG" width="100" height="100" alt="IIT B">
+      </li>
+
+
+    </ol>
+      
+    </div>
+    <div class="questionbox">
+      <h2>Questions</h2>
+      <h5>If you have any questions you can post them here. </h5>
+      <div class="row" style="color: red"> 
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+              
+            {% for message in messages %}
+                <strong> {{ message }} </strong>
+            {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+      </div>
+    </div>
+    <div class="questionarea">
+      <div class="row">
+      <form method="post">
+        <!-- <textarea name="question" value="" rows="2" style="height: 100px; width: 400px;">
+        </textarea>  -->
+        <input type="text" name="question" style="font-size: 18pt; height: 40px; width:280px;"  value="">
+        <input type="submit">
+        <ol>
+
+          {% for entries in j %}
+
+          <li><a href='{{url_for('JavaAnswers', course=2, question = entries.id+1 ) }}' >
+
+            <!-- <a href="PythonAnswers"> -->
+<!--               {{entries.qid}} -->
+            {{entries.question}}</a></li>
+        {% endfor %}
+        </ol>
+      </form>
+    </div>
+    </div>
+  </div>
+
+
+
+
+
+  
+  </body>
+</html>

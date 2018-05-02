@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> DATASTRUCTURE  Resources</title>
+</head>
+<body>
+  <div align="right">
+            <form action="/logout">
+              <input type="submit" name="logout" value="logout">
+            </form>
+      </div>
+      <br><br>
+    <div class="container">
+    <div class="DatastructureResources">
+      <ol>
+      <li>
+        <a href="https://www.tutorialspoint.com/data_structures_algorithms/"> TUTORIAL POINT</a>
+        <br>
+        <img src="static/tutorialpoint.jpg" width="100" height="100" alt="tutorialspoint">
+
+      </li>
+
+      <li>
+        <a href="https://onlinecourses.nptel.ac.in/noc18_cs25"> NPTEL </a>
+        <br>
+        <img src="static/nptel.jpg" width="100" height="100" alt="NPTEL">
+
+      </li>
+
+      <li>
+        <a href="https://algs4.cs.princeton.edu/">PRINCETON</a>
+        <br>
+        <img src="static/princeton.png" width="100" height="100" alt="princeton">
+
+      </li>
+
+    </ol>
+      
+    </div>
+    <div class="questionbox">
+      <h2>Questions</h2>
+      <h5>If you have any questions you can post them here. </h5>
+      <div class="row" style="color: red"> 
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+              
+            {% for message in messages %}
+                <strong> {{ message }} </strong>
+            {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+      </div>
+    </div>
+    <div class="questionarea">
+      <div class="row">
+      <form method="post">
+        <!-- <textarea name="question" value="" rows="2" style="height: 100px; width: 400px;">
+        </textarea>  -->
+        <input type="text" name="question" style="font-size: 18pt; height: 40px; width:280px;"  value="">
+        <input type="submit">
+        <ol>
+        {% for entries in p %}
+          <li><a href='{{url_for('DSAnswers', course=3, question = entries.id ) }}'>{{entries.question}}</a></li>
+        {% endfor %}
+        </ol>
+      </form>
+    </div>
+    </div>
+  </div>	
+  </body>
+</html>
